@@ -1,19 +1,12 @@
-# VARIABLES
-variable "bucket_name" {}
-variable "name" {}
-variable "environment" {}
-
-output "remote_state_s3_bucket_name" {
-  value = aws_s3_bucket.remote_state_bucket.id
-}
-
 resource "aws_s3_bucket" "remote_state_bucket" {
-  bucket = var.bucket_name
+  bucket = "devops6464654544646"
 
   tags = {
-    Name        = var.name
-    Environment = var.environment
+    Name        = "Terraform Remote State"
+    Environment = "dev"
   }
 }
 
-
+output "remote_state_s3_bucket_name" {
+  value = aws_s3_bucket.remote_state_bucket.bucket
+}
